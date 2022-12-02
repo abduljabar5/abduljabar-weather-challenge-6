@@ -1,0 +1,17 @@
+
+
+h1{
+    background-color: rgba(0, 57, 149, 0.607);
+    padding: 20px;
+    text-align: end;
+}
+.container{
+    display: flex;
+}
+.leftside{
+    padding: 20px;
+    background-color: bisque;
+}
+#smallcards{
+    width: 20%;
+}
