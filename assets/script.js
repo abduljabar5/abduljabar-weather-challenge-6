@@ -26,25 +26,44 @@ var wind5 = document.querySelector(".wind5")
 var btn = document.querySelector("#btn")
 var lat = ""
 var lon = ""
+
+     var icon = document.getElementById("icon")
+
 btn.textContent = localStorage.getItem("lock",name)
   function search() {
-
     var citySearch = document.querySelector("#searchspot").value;
          var name = citySearch
          localStorage.setItem("lock",name)
     console.log(name);
-
-    
+   
 var apiKey = "https://api.openweathermap.org/data/2.5/forecast?q=" + name+"&appid=35941eaf6c6dead0cc6b8237da9cb107&units=imperial"
 var apiKey2 = "https://api.openweathermap.org/data/2.5/weather?q= "+name+"&appid=35941eaf6c6dead0cc6b8237da9cb107&units=imperial"
 
   fetch(apiKey2)
   .then(function (response) {
+   if (response.ok){
     return response.json();
+   } else {
+     window.alert("city not found")
+     cityNamePaste.textContent = "city not found"
+   }
   })
   .then(function (data) {
     console.log(data);
     cityNamePaste.textContent = data.name + " " + dayjs().format('DD/MM/YYYY')
+  var input = data.weather[0].main
+ 
+  if (data.weather[0].main === 'Clear'){
+    
+    cityNamePaste.textContent += "☀️"
+  } else if (data.weather[0].main === 'Clouds'){
+    cityNamePaste.textContent += "☁️"
+  } else if (data.weather[0].main === 'Rain'){
+    cityNamePaste.textContent += "⛈️"
+  } else if (data.weather[0].main === "Snow"){
+    cityNamePaste.textContent += "❄️"
+  } 
+  console.log(input);
     todaysTemp.textContent = data.main.temp + "°"
     todaysHum.textContent = data.main.humidity + "%"
     todaysWind.textContent = data.wind.speed + " MPH"
@@ -58,10 +77,55 @@ fetch(apiKey)
     console.log(data);
 
     date1.textContent =data.list[0].dt_txt
+    if (data.list[0].weather[0].main === 'Clear'){
+      date1.textContent += "☀️"
+    } else if (data.list[0].weather[0].main === 'Clouds'){
+      date1.textContent += "☁️"
+    }else if (data.list[0].weather[0].main === 'Rain'){
+      date1.textContent += "⛈️"
+    } else if (data.list[0].weather[0].main === "Snow"){
+      date1.textContent += "❄️"
+    } 
     date2.textContent =data.list[8].dt_txt
+    if (data.list[8].weather[0].main === 'Clear'){
+      date2.textContent += "☀️"
+    } else if (data.list[8].weather[0].main === 'Clouds'){
+      date2.textContent += "☁️"
+    }else if (data.list[8].weather[0].main === 'Rain'){
+      date2.textContent += "⛈️"
+    } else if (data.list[8].weather[0].main === "Snow"){
+      date2.textContent += "❄️"
+    } 
     date3.textContent =data.list[16].dt_txt
+    if (data.list[16].weather[0].main === 'Clear'){
+      date3.textContent += "☀️"
+    } else if (data.list[16].weather[0].main === 'Clouds'){
+      date3.textContent += "☁️"
+    }else if (data.list[16].weather[0].main === 'Rain'){
+      date3.textContent += "⛈️"
+    } else if (data.list[16].weather[0].main === "Snow"){
+      date3.textContent += "❄️"
+    } 
     date4.textContent =data.list[24].dt_txt
+    if (data.list[24].weather[0].main === 'Clear'){
+      date4.textContent += "☀️"
+    } else if (data.list[24].weather[0].main === "Clouds"){
+      date4.textContent += "☁️"
+    }else if (data.list[24].weather[0].main === 'Rain'){
+      date4.textContent += "⛈️"
+    } else if (data.list[24].weather[0].main === "Snow"){
+      date4.textContent += "❄️"
+    } 
     date5.textContent =data.list[32].dt_txt
+    if (data.list[32].weather[0].main === 'Clear'){
+      date5.textContent += "☀️"
+    } else if (data.list[32].weather[0].main === "Clouds"){
+      date5.textContent += "☁️"
+    }else if (data.list[32].weather[0].main === 'Rain'){
+      date5.textContent += "⛈️"
+    } else if (data.list[32].weather[0].main === "Snow"){
+      date5.textContent += "❄️"
+    } 
     temp1.textContent = data.list[0].main.temp + "°"
     temp2.textContent = data.list[8].main.temp + "°"
     temp3.textContent = data.list[16].main.temp + "°"
@@ -82,11 +146,17 @@ fetch(apiKey)
     
     
   });
-
+  
 
     }
    
-
+btn.addEventListener("click",function(){
+  var citySearch = document.querySelector("#searchspot");
+ 
+  var save = localStorage.getItem("lock",name)
+citySearch.value = save
+  search()
+})
 var searchButton = document.querySelector("#searchbutton")
 searchButton.addEventListener("click",function(event){
 
