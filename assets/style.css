@@ -1,17 +1,19 @@
 
-
+/* changes to h1 */
 h1{
     background-color: rgba(0, 57, 149, 0.607);
     padding: 20px;
     text-align: center;
 }
+/* changes to container */
 .container{
     display: flex;
 }
-.leftside{
+/*.leftside{
     padding: 20px;
     background-color: bisque;
-}
+}*/
+/* changes up comming days card size*/
 #smallcards{
     width: 20%;
 }

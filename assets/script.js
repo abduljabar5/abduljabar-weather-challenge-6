@@ -37,40 +37,16 @@ var name1 = citySearch
 var icon = document.getElementById("icon")
 var list = localStorage.getItem("lock")
 var list2 = JSON.parse(list)
-console.log(list2[1]);
-//console.log(list2); 
-
-// btn.innerHTML = localStorage.getItem("lock",)
+var citySearch = document.querySelector("#searchspot");
 
 
-//       var newButton = document.createElement("button")
-// newButton.innerHTML = list2[0]
-// historyButton.appendChild(newButton)
-// newButton.addEventListener("click",function () {
-//   citySearch.value = JSON.stringify(list2) 
-//   console.log(JSON.stringify(list2[0]) );
-//   search()
-// })
-  
-  
-
-
-
-
-    var citySearch = document.querySelector("#searchspot");
-
-
-  function search() {
-         var name = citySearch.value
-         //local storage
-
-    
-         searchHistory.push(name )
-         console.log(searchHistory);
-
-         localStorage.setItem("lock", JSON.stringify(searchHistory));
-         
-    console.log(name);
+function search() {
+  var name = citySearch.value
+// puts search value into local storage
+    searchHistory.push(name )
+    console.log(searchHistory);
+    localStorage.setItem("lock", JSON.stringify(searchHistory));
+   
    
 var apiKey = "https://api.openweathermap.org/data/2.5/forecast?q=" + name+"&appid=35941eaf6c6dead0cc6b8237da9cb107&units=imperial"
 var apiKey2 = "https://api.openweathermap.org/data/2.5/weather?q= "+name+"&appid=35941eaf6c6dead0cc6b8237da9cb107&units=imperial"
@@ -80,17 +56,19 @@ var apiKey2 = "https://api.openweathermap.org/data/2.5/weather?q= "+name+"&appid
    if (response.ok){
     return response.json();
    } else {
+    // alerts if city is not found
      window.alert("city not found")
      cityNamePaste.textContent = "city not found"
    }
   })
   .then(function (data) {
     console.log(data);
+    // adds todays date
     cityNamePaste.textContent = data.name + " " + dayjs().format('DD/MM/YYYY')
   var input = data.weather[0].main
  
   if (data.weather[0].main === 'Clear'){
-    
+    // adds icon next to todays weather
     cityNamePaste.textContent += "☀️"
   } else if (data.weather[0].main === 'Clouds'){
     cityNamePaste.textContent += "☁️"
@@ -100,6 +78,7 @@ var apiKey2 = "https://api.openweathermap.org/data/2.5/weather?q= "+name+"&appid
     cityNamePaste.textContent += "❄️"
   } 
   console.log(input);
+  // adds info to todays weather section
     todaysTemp.textContent = data.main.temp + "°"
     todaysHum.textContent = data.main.humidity + "%"
     todaysWind.textContent = data.wind.speed + " MPH"
@@ -111,7 +90,7 @@ fetch(apiKey)
   })
   .then(function (data) {
     console.log(data);
-
+// adds date and icons to the upcoming days
     date1.textContent =data.list[0].dt_txt
     if (data.list[0].weather[0].main === 'Clear'){
       date1.textContent += "☀️"
@@ -162,6 +141,7 @@ fetch(apiKey)
     } else if (data.list[32].weather[0].main === "Snow"){
       date5.textContent += "❄️"
     } 
+    // adds text to the five up comming days
     temp1.textContent = data.list[0].main.temp + "°"
     temp2.textContent = data.list[8].main.temp + "°"
     temp3.textContent = data.list[16].main.temp + "°"
@@ -176,26 +156,15 @@ fetch(apiKey)
     wind2.textContent = data.list[8].wind.speed + " MPH"
     wind3.textContent = data.list[16].wind.speed + " MPH"
     wind4.textContent = data.list[24].wind.speed + " MPH"
-    wind5.textContent = data.list[32].wind.speed + " MPH"
-    // todaysHum.textContent = data.list[0].main.humidity + "%"
-    // todaysWind.textContent = data.list[0].wind.speed + " MPH"
-
-    
+    wind5.textContent = data.list[32].wind.speed + " MPH" 
   });
-  
-  
-
     }
  
-
-    
 if (list2[0]){
   btn.textContent = list2[0]
 } 
 btn.addEventListener("click",function(){
-  var citySearch = document.querySelector("#searchspot");
-  
-  //var save = localStorage.getItem("lock",name)
+var citySearch = document.querySelector("#searchspot");
 citySearch.value = list2[0]
   search()
 })
@@ -248,7 +217,7 @@ btn4.addEventListener("click",function(){
 citySearch.value = list2[4]
   search()
 })
-
+// runs search function after search button is clicked
 var searchButton = document.querySelector("#searchbutton")
 searchButton.addEventListener("click",function(event){
 

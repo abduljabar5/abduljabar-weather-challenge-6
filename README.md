@@ -14,7 +14,8 @@ search for a city to see its weather.
 ![Alt text](assets/weather%20ss.jpg)
 
 ## Credits
-google.com <br>
+google.com 
+<br>
 https://developer.mozilla.org/en-US/docs/Web/API/Storage/getItem
 <br>
 https://stackoverflow.com/questions/195951/how-can-i-change-an-elements-class-with-javascript
