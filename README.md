@@ -57,4 +57,8 @@ SOFTWARE.
 Footer
 © 2022 GitHub, Inc.
 Footer navigation
-
+ var imageUrl = response._embedded.events[0].images[0].url
+            $("#Events").text(eventName);
+            $("#Dates").text(eventDate);
+            image.src = imageUrl
+            console.log(image);

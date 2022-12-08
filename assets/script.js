@@ -35,10 +35,9 @@ var searchHistory = []
 var citySearch = document.querySelector("#searchspot").value;
 var name1 = citySearch
 var icon = document.getElementById("icon")
-var list = localStorage.getItem("lock")
-if (list){
-  var list2 = JSON.parse(list)
-}
+var list = JSON.parse(localStorage.getItem("lock"))
+var list2 = list
+
 
 var citySearch = document.querySelector("#searchspot");
 
