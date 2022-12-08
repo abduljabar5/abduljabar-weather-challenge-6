@@ -3,7 +3,7 @@
 h1{
     background-color: rgba(0, 57, 149, 0.607);
     padding: 20px;
-    text-align: end;
+    text-align: center;
 }
 .container{
     display: flex;

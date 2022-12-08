@@ -24,16 +24,52 @@ var wind3 = document.querySelector(".wind3")
 var wind4 = document.querySelector(".wind4")
 var wind5 = document.querySelector(".wind5")
 var btn = document.querySelector("#btn")
+var btn1 = document.querySelector("#btn1")
+var btn2 = document.querySelector("#btn2")
+var btn3 = document.querySelector("#btn3")
+var btn4 = document.querySelector("#btn4")
+var historyButton = document.querySelector("#historybuttons")
 var lat = ""
 var lon = ""
+var searchHistory = []
+var citySearch = document.querySelector("#searchspot").value;
+var name1 = citySearch
+var icon = document.getElementById("icon")
+var list = localStorage.getItem("lock")
+var list2 = JSON.parse(list)
+console.log(list2[1]);
+//console.log(list2); 
 
-     var icon = document.getElementById("icon")
+// btn.innerHTML = localStorage.getItem("lock",)
 
-btn.textContent = localStorage.getItem("lock",name)
+
+//       var newButton = document.createElement("button")
+// newButton.innerHTML = list2[0]
+// historyButton.appendChild(newButton)
+// newButton.addEventListener("click",function () {
+//   citySearch.value = JSON.stringify(list2) 
+//   console.log(JSON.stringify(list2[0]) );
+//   search()
+// })
+  
+  
+
+
+
+
+    var citySearch = document.querySelector("#searchspot");
+
+
   function search() {
-    var citySearch = document.querySelector("#searchspot").value;
-         var name = citySearch
-         localStorage.setItem("lock",name)
+         var name = citySearch.value
+         //local storage
+
+    
+         searchHistory.push(name )
+         console.log(searchHistory);
+
+         localStorage.setItem("lock", JSON.stringify(searchHistory));
+         
     console.log(name);
    
 var apiKey = "https://api.openweathermap.org/data/2.5/forecast?q=" + name+"&appid=35941eaf6c6dead0cc6b8237da9cb107&units=imperial"
@@ -143,20 +179,76 @@ fetch(apiKey)
     wind5.textContent = data.list[32].wind.speed + " MPH"
     // todaysHum.textContent = data.list[0].main.humidity + "%"
     // todaysWind.textContent = data.list[0].wind.speed + " MPH"
-    
+
     
   });
   
+  
 
     }
-   
+ 
+
+    
+if (list2[0]){
+  btn.textContent = list2[0]
+} 
 btn.addEventListener("click",function(){
   var citySearch = document.querySelector("#searchspot");
- 
-  var save = localStorage.getItem("lock",name)
-citySearch.value = save
+  
+  //var save = localStorage.getItem("lock",name)
+citySearch.value = list2[0]
   search()
 })
+// new button under search history
+if (list2[1]){
+    btn1.textContent = list2[1]
+
+}
+console.log(list2[1]);
+btn1.addEventListener("click",function(){
+  var citySearch = document.querySelector("#searchspot");
+ 
+
+citySearch.value = list2[1]
+  search()
+})
+// new button under search history
+if (list2[2]){
+btn2.textContent = list2[2]
+}
+
+btn2.addEventListener("click",function(){
+  var citySearch = document.querySelector("#searchspot");
+ 
+
+citySearch.value = list2[2]
+  search()
+})
+// new button under search history
+if (list2[3]){
+  btn3.textContent = list2[3]
+
+}
+btn3.addEventListener("click",function(){
+  var citySearch = document.querySelector("#searchspot");
+ 
+
+citySearch.value = list2[3]
+  search()
+})
+// new button under search history
+if (list2[4]){
+  btn4.textContent = list2[4]
+
+}
+btn4.addEventListener("click",function(){
+  var citySearch = document.querySelector("#searchspot");
+ 
+
+citySearch.value = list2[4]
+  search()
+})
+
 var searchButton = document.querySelector("#searchbutton")
 searchButton.addEventListener("click",function(event){
 
