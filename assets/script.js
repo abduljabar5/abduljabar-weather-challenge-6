@@ -36,7 +36,10 @@ var citySearch = document.querySelector("#searchspot").value;
 var name1 = citySearch
 var icon = document.getElementById("icon")
 var list = localStorage.getItem("lock")
-var list2 = JSON.parse(list)
+if (list){
+  var list2 = JSON.parse(list)
+}
+
 var citySearch = document.querySelector("#searchspot");
 
 
@@ -159,6 +162,8 @@ fetch(apiKey)
     wind5.textContent = data.list[32].wind.speed + " MPH" 
   });
     }
+ if (list){
+
  
 if (list2[0]){
   btn.textContent = list2[0]
@@ -217,6 +222,7 @@ btn4.addEventListener("click",function(){
 citySearch.value = list2[4]
   search()
 })
+ }
 // runs search function after search button is clicked
 var searchButton = document.querySelector("#searchbutton")
 searchButton.addEventListener("click",function(event){
