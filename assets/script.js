@@ -35,9 +35,9 @@ var searchHistory = []
 var citySearch = document.querySelector("#searchspot").value;
 var name1 = citySearch
 var icon = document.getElementById("icon")
-// var list = JSON.parse(localStorage.getItem("lock"))
+var list = JSON.parse(localStorage.getItem("lock"))
 
-//   var list2 = list
+  var list2 = list
 
 
 var citySearch = document.querySelector("#searchspot");
@@ -162,67 +162,67 @@ fetch(apiKey)
     wind5.textContent = data.list[32].wind.speed + " MPH" 
   });
     }
-//  if (list){
+ if (list){
 
  
-// if (list2[0]){
-//   btn.textContent = list2[0]
-// } 
-// btn.addEventListener("click",function(){
-// var citySearch = document.querySelector("#searchspot");
-// citySearch.value = list2[0]
-//   search()
-// })
-// // new button under search history
-// if (list2[1]){
-//     btn1.textContent = list2[1]
+if (list2[0]){
+  btn.textContent = list2[0]
+} 
+btn.addEventListener("click",function(){
+var citySearch = document.querySelector("#searchspot");
+citySearch.value = list2[0]
+  search()
+})
+// new button under search history
+if (list2[1]){
+    btn1.textContent = list2[1]
 
-// }
-// console.log(list2[1]);
-// btn1.addEventListener("click",function(){
-//   var citySearch = document.querySelector("#searchspot");
+}
+console.log(list2[1]);
+btn1.addEventListener("click",function(){
+  var citySearch = document.querySelector("#searchspot");
  
 
-// citySearch.value = list2[1]
-//   search()
-// })
-// // new button under search history
-// if (list2[2]){
-// btn2.textContent = list2[2]
-// }
+citySearch.value = list2[1]
+  search()
+})
+// new button under search history
+if (list2[2]){
+btn2.textContent = list2[2]
+}
 
-// btn2.addEventListener("click",function(){
-//   var citySearch = document.querySelector("#searchspot");
+btn2.addEventListener("click",function(){
+  var citySearch = document.querySelector("#searchspot");
  
 
-// citySearch.value = list2[2]
-//   search()
-// })
-// // new button under search history
-// if (list2[3]){
-//   btn3.textContent = list2[3]
+citySearch.value = list2[2]
+  search()
+})
+// new button under search history
+if (list2[3]){
+  btn3.textContent = list2[3]
 
-// }
-// btn3.addEventListener("click",function(){
-//   var citySearch = document.querySelector("#searchspot");
+}
+btn3.addEventListener("click",function(){
+  var citySearch = document.querySelector("#searchspot");
  
 
-// citySearch.value = list2[3]
-//   search()
-// })
-// // new button under search history
-// if (list2[4]){
-//   btn4.textContent = list2[4]
+citySearch.value = list2[3]
+  search()
+})
+// new button under search history
+if (list2[4]){
+  btn4.textContent = list2[4]
 
-// }
-// btn4.addEventListener("click",function(){
-//   var citySearch = document.querySelector("#searchspot");
+}
+btn4.addEventListener("click",function(){
+  var citySearch = document.querySelector("#searchspot");
  
 
-// citySearch.value = list2[4]
-//   search()
-// })
-//  }
+citySearch.value = list2[4]
+  search()
+})
+ }
 // runs search function after search button is clicked
 var searchButton = document.querySelector("#searchbutton")
 searchButton.addEventListener("click",function(event){
